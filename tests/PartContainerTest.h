@@ -16,6 +16,7 @@
 
 #include <cppunit/extensions/HelperMacros.h>
 #include "../PartContainer.h"
+#include <iostream>
 
 class PartContainerTest : public CPPUNIT_NS::TestFixture{
     CPPUNIT_TEST_SUITE(PartContainerTest);
@@ -23,6 +24,9 @@ class PartContainerTest : public CPPUNIT_NS::TestFixture{
     /* Singleton related test */
     CPPUNIT_TEST(intTest);
     
+    CPPUNIT_TEST(duplicatedIdSameContainer);
+    
+    CPPUNIT_TEST(duplicatedIdMultipleContainers);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -38,6 +42,11 @@ private:
     
     /* test with integer type */
     void intTest();
+    
+    
+    void duplicatedIdSameContainer();
+    
+    void duplicatedIdMultipleContainers();
 
 };
 
