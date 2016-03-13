@@ -35,17 +35,20 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/ArmPartContainer.o
+	${OBJECTDIR}/IdService.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
+	${TESTDIR}/TestFiles/f2 \
 	${TESTDIR}/TestFiles/f1
 
 # Test Object Files
 TESTOBJECTFILES= \
+	${TESTDIR}/tests/IdServiceTest.o \
+	${TESTDIR}/tests/IdServiceTestRunner.o \
 	${TESTDIR}/tests/PartContainerTest.o \
 	${TESTDIR}/tests/PartContainerTestRunner.o
 
@@ -75,10 +78,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libpartcontainerlibrary.a: ${OBJECTFI
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libpartcontainerlibrary.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libpartcontainerlibrary.a
 
-${OBJECTDIR}/ArmPartContainer.o: ArmPartContainer.cpp 
+${OBJECTDIR}/IdService.o: IdService.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../ArmPartsLibrary/RoboticArmParts/dist/Debug/GNU-Linux -include /mnt/western_digital_2TB/Development/Robotkar/ArmPartsLibrary/RoboticArmParts/AllParts.h -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArmPartContainer.o ArmPartContainer.cpp
+	$(COMPILE.cc) -g -I../ArmPartsLibrary/RoboticArmParts/dist/Debug/GNU-Linux -include /mnt/western_digital_2TB/Development/Robotkar/ArmPartsLibrary/RoboticArmParts/AllParts.h -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IdService.o IdService.cpp
 
 # Subprojects
 .build-subprojects:
@@ -87,9 +90,25 @@ ${OBJECTDIR}/ArmPartContainer.o: ArmPartContainer.cpp
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
+${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/IdServiceTest.o ${TESTDIR}/tests/IdServiceTestRunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/PartContainerTest.o ${TESTDIR}/tests/PartContainerTestRunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+
+${TESTDIR}/tests/IdServiceTest.o: tests/IdServiceTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../ArmPartsLibrary/RoboticArmParts/dist/Debug/GNU-Linux -include /mnt/western_digital_2TB/Development/Robotkar/ArmPartsLibrary/RoboticArmParts/AllParts.h -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/IdServiceTest.o tests/IdServiceTest.cpp
+
+
+${TESTDIR}/tests/IdServiceTestRunner.o: tests/IdServiceTestRunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../ArmPartsLibrary/RoboticArmParts/dist/Debug/GNU-Linux -include /mnt/western_digital_2TB/Development/Robotkar/ArmPartsLibrary/RoboticArmParts/AllParts.h -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/IdServiceTestRunner.o tests/IdServiceTestRunner.cpp
 
 
 ${TESTDIR}/tests/PartContainerTest.o: tests/PartContainerTest.cpp 
@@ -104,23 +123,24 @@ ${TESTDIR}/tests/PartContainerTestRunner.o: tests/PartContainerTestRunner.cpp
 	$(COMPILE.cc) -g -I../ArmPartsLibrary/RoboticArmParts/dist/Debug/GNU-Linux -include /mnt/western_digital_2TB/Development/Robotkar/ArmPartsLibrary/RoboticArmParts/AllParts.h -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/PartContainerTestRunner.o tests/PartContainerTestRunner.cpp
 
 
-${OBJECTDIR}/ArmPartContainer_nomain.o: ${OBJECTDIR}/ArmPartContainer.o ArmPartContainer.cpp 
+${OBJECTDIR}/IdService_nomain.o: ${OBJECTDIR}/IdService.o IdService.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/ArmPartContainer.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/IdService.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I../ArmPartsLibrary/RoboticArmParts/dist/Debug/GNU-Linux -include /mnt/western_digital_2TB/Development/Robotkar/ArmPartsLibrary/RoboticArmParts/AllParts.h -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArmPartContainer_nomain.o ArmPartContainer.cpp;\
+	    $(COMPILE.cc) -g -I../ArmPartsLibrary/RoboticArmParts/dist/Debug/GNU-Linux -include /mnt/western_digital_2TB/Development/Robotkar/ArmPartsLibrary/RoboticArmParts/AllParts.h -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IdService_nomain.o IdService.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/ArmPartContainer.o ${OBJECTDIR}/ArmPartContainer_nomain.o;\
+	    ${CP} ${OBJECTDIR}/IdService.o ${OBJECTDIR}/IdService_nomain.o;\
 	fi
 
 # Run Test Targets
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
+	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	else  \
 	    ./${TEST} || true; \

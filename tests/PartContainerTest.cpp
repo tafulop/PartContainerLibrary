@@ -12,7 +12,6 @@
  */
 
 #include "PartContainerTest.h"
-#include "../ArmPartContainer.h"
 
 
 CPPUNIT_TEST_SUITE_REGISTRATION(PartContainerTest);
@@ -30,9 +29,8 @@ void PartContainerTest::tearDown() {
 }
 
 
-
 /* Checks if singleton pattern works */
-void PartContainerTest::singletonArmPartContainerTest() {
+void PartContainerTest::intTest() {
     
     PartContainer<int> i;
     

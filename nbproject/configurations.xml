@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>IdService.h</itemPath>
       <itemPath>PartContainer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -13,12 +14,20 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>ArmPartContainer.cpp</itemPath>
+      <itemPath>IdService.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f2"
+                     displayName="IdServiceTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/IdServiceTest.cpp</itemPath>
+        <itemPath>tests/IdServiceTest.h</itemPath>
+        <itemPath>tests/IdServiceTestRunner.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1"
                      displayName="PartContainerTest"
                      projectFiles="true"
@@ -56,7 +65,9 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="ArmPartContainer.cpp" ex="false" tool="1" flavor2="0">
+      <item path="IdService.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IdService.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PartContainer.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -74,6 +85,26 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="tests/IdServiceTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/IdServiceTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/IdServiceTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="tests/PartContainerTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/PartContainerTest.h" ex="false" tool="3" flavor2="0">
@@ -103,7 +134,9 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="ArmPartContainer.cpp" ex="false" tool="1" flavor2="0">
+      <item path="IdService.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IdService.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PartContainer.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -121,6 +154,26 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="tests/IdServiceTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/IdServiceTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/IdServiceTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="tests/PartContainerTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/PartContainerTest.h" ex="false" tool="3" flavor2="0">

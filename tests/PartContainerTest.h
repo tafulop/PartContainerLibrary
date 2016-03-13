@@ -21,7 +21,7 @@ class PartContainerTest : public CPPUNIT_NS::TestFixture{
     CPPUNIT_TEST_SUITE(PartContainerTest);
     
     /* Singleton related test */
-    CPPUNIT_TEST(singletonArmPartContainerTest);
+    CPPUNIT_TEST(intTest);
     
 
     CPPUNIT_TEST_SUITE_END();
@@ -36,8 +36,8 @@ private:
     void testMethod();
 
     
-    /* singleton test */
-    void singletonArmPartContainerTest();
+    /* test with integer type */
+    void intTest();
 
 };
 

@@ -19,7 +19,7 @@
 #include <memory>
 #include <map>
 
-#include "../ArmPartsLibrary/RoboticArmParts/AllParts.h"
+#include "IdService.h"
 
 template <class Type> class PartContainer {
 
@@ -55,7 +55,14 @@ template <class Type> class PartContainer {
          * @return True if adding was successful, false if it failed.
          */
         bool add(std::string id, Type part){
-            storedObjects.emplace(id, part);
+            
+            if(IdService::getInstance().registerId(id) == true){
+                storedObjects.emplace(id, part);
+                return true;
+            }else{
+                return false;
+            }
+            
         }
 
         /**
