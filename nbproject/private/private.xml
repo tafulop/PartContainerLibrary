@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
+        <activeConfTypeElem>3</activeConfTypeElem>
+        <activeConfIndexElem>0</activeConfIndexElem>
+    </data>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/mnt/western_digital_2TB/Development/Robotkar/PartContainerLibrary/PartContainer.cpp</file>
+            <file>file:/mnt/western_digital_2TB/Development/Robotkar/PartContainerLibrary/ArmPartContainer.h</file>
+            <file>file:/mnt/western_digital_2TB/Development/Robotkar/PartContainerLibrary/ArmPartContainer.cpp</file>
+            <file>file:/mnt/western_digital_2TB/Development/Robotkar/PartContainerLibrary/tests/PartContainerTestRunner.cpp</file>
+            <file>file:/mnt/western_digital_2TB/Development/Robotkar/PartContainerLibrary/PartContainer.h</file>
+            <file>file:/mnt/western_digital_2TB/Development/Robotkar/PartContainerLibrary/tests/PartContainerTest.cpp</file>
+            <file>file:/mnt/western_digital_2TB/Development/Robotkar/PartContainerLibrary/tests/PartContainerTest.h</file>
+        </group>
+    </open-files>
+</project-private>
