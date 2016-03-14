@@ -14,7 +14,7 @@
 #ifndef IDSERVICE_H
 #define IDSERVICE_H
 
-#include <vector>
+#include <set>
 #include <mutex>
 
 class IdService {
@@ -58,7 +58,7 @@ public:
 private:
     
     /* Stores the IDs that have been used before */
-    std::vector<std::string> registeredIds;
+    std::set<std::string> registeredIds;
     
     /* Prevents multithread modification in id list*/
     std::mutex iter_lock;

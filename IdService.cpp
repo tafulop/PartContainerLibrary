@@ -34,7 +34,7 @@ bool IdService::registerId(std::string id){
     if(id == "")return false;
     
     if(isRegistered(id) == false){
-        registeredIds.emplace_back(id);
+        registeredIds.insert(id);
         return true;
     }else{
         return false;
@@ -48,11 +48,9 @@ bool IdService::isRegistered(std::string id){
     bool result = false;
     
     iter_lock.lock();
-     
-    for(std::vector<std::string>::iterator it = registeredIds.begin(); it != registeredIds.end(); ++it) {
-        if(*it == id)result = true;
-    }
-    
+
+    if(this->registeredIds.count(id) > 0)result = true;
+
     iter_lock.unlock();
 
     return result;
