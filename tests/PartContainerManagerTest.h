@@ -23,10 +23,10 @@ class PartContainerManagerTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(singletonTest);
     
     /* populating */
-     CPPUNIT_TEST(addArmPart);
-   /*  CPPUNIT_TEST(addBody);
-     CPPUNIT_TEST(addJoint);
-     CPPUNIT_TEST(addEffector);*/
+    CPPUNIT_TEST(addArmPart);
+    CPPUNIT_TEST(addBody);
+    CPPUNIT_TEST(addJoint);
+    CPPUNIT_TEST(addEffector);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -44,9 +44,9 @@ private:
     
     /* Populating */
     void addArmPart();
-   /* void addBody();
+    void addBody();
     void addJoint();
-    void addEffector();*/
+    void addEffector();
     
 };
 

@@ -58,12 +58,11 @@ void PartContainerManagerTest::addArmPart(){
     std::shared_ptr<RoboticArm::ArmPart> a = p.armparts.get(s_id);
     
     std::cout << "ID: " << a->getId();
-    
-    CPPUNIT_ASSERT(success == true);
+       CPPUNIT_ASSERT(success == true);
 
 }
     
-/*    
+
 void PartContainerManagerTest::addBody(){
     
     bool success = true;
@@ -80,42 +79,14 @@ void PartContainerManagerTest::addBody(){
     
     p.bodies.add(s_id, RoboticArm::Body(1, name, mass, length)); 
     
-    RoboticArm::Body& a = p.bodies.get(s_id);
+    std::shared_ptr<RoboticArm::Body> a = p.bodies.get(s_id);
     
-    if(a.getId() != id || a.getLength() != length || a.getMass() != mass || a.getName() != name)success = false;
-    
-    CPPUNIT_ASSERT(success == true);
-
-}
-
-    
-void PartContainerManagerTest::addJoint(){
-    
-    bool success = true;
-    
-    PartContainerManager& p = PartContainerManager::getInstance();
-    
-    std::string s_id = "J1";
-    
-    float length = 444.444;
-    float mass = 123.321;
-    std::string name = "test name";
-    int id = 1;
-    
-
-    p.joints.add(s_id, RoboticArm::Joint(1, name, mass, length)); 
-    
-    RoboticArm::Joint& a = p.joints.get(s_id);
-    
-    if(a.getId() != id || a.getLength() != length || a.getMass() != mass || a.getName() != name)success = false;
-    
-    std::cout << a.getId();
+    if(a->getId() != id || a->getLength() != length || a->getMass() != mass || a->getName() != name)success = false;
     
     CPPUNIT_ASSERT(success == true);
 
 }
 
-    
     
 void PartContainerManagerTest::addEffector(){
     
@@ -133,12 +104,36 @@ void PartContainerManagerTest::addEffector(){
     
     p.effectors.add(s_id, RoboticArm::Effector(1, name, mass, length)); 
     
-    RoboticArm::Effector& a = p.effectors.get(s_id);
+    std::shared_ptr<RoboticArm::Effector> a = p.effectors.get(s_id);
     
-    if(a.getId() != id || a.getLength() != length || a.getMass() != mass || a.getName() != name)success = false;
+    if(a->getId() != id || a->getLength() != length || a->getMass() != mass || a->getName() != name)success = false;
     
     CPPUNIT_ASSERT(success == true);
 
 }
- * 
- * */
+
+    
+    
+void PartContainerManagerTest::addJoint(){
+    
+    bool success = true;
+    
+    PartContainerManager& p = PartContainerManager::getInstance();
+    
+    std::string s_id = "J1";
+    
+    float length = 444.444;
+    float mass = 123.321;
+    std::string name = "test name";
+    int id = 1;
+    
+    
+    p.joints.add(s_id, RoboticArm::Joint(1, name, mass, length)); 
+    
+    std::shared_ptr<RoboticArm::Joint> a = p.joints.get(s_id);
+    
+    if(a->getId() != id || a->getLength() != length || a->getMass() != mass || a->getName() != name)success = false;
+    
+    CPPUNIT_ASSERT(success == true);
+
+}
