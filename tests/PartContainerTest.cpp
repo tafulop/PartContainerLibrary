@@ -33,12 +33,14 @@ void PartContainerTest::tearDown() {
 void PartContainerTest::intTest() {
     
     PartContainer<int> i;
+    int testNum = 1234;
     
-    i.add("test", 1);
+    
+    i.add("test", testNum);
  
     std::shared_ptr<int> test = i.get("test");
     
-    CPPUNIT_ASSERT(*test == 1);
+    CPPUNIT_ASSERT(*test == testNum);
 
 }
 
@@ -55,6 +57,20 @@ void PartContainerTest::duplicatedIdSameContainer(){
     CPPUNIT_ASSERT(success == true);
 }
 
+void PartContainerTest::stringTest(){
+     
+     PartContainer<std::string> pc;
+     
+     std::string test_id = "test id";
+     std::string test_str = "testsrtdflgslgfkm";
+     
+     pc.add(test_id, test_str);
+     
+     std::shared_ptr<std::string> read_back = pc.get(test_id);
+     
+     CPPUNIT_ASSERT(*read_back == test_str);
+
+ }
 
  void PartContainerTest::duplicatedIdMultipleContainers(){
      
@@ -73,4 +89,30 @@ void PartContainerTest::duplicatedIdSameContainer(){
     std::cout << "STEP 2: Second testId registration: " << success << std::endl;
     
     CPPUNIT_ASSERT(success == true);
+ }
+ 
+ 
+ void PartContainerTest::customClassTest(){
+     
+     PartContainer<RoboticArm::ArmPart> pc;
+     
+     std::string test_id = "ID_MAAAN";
+     
+     // arm part attributes
+     std::string test_name = "name";
+     int id = 1;
+     float mass = 123.2, length = 7678.45;
+     
+     // store
+     RoboticArm::ArmPart armp = RoboticArm::ArmPart(id, test_name, mass, length);
+     bool emplaced = pc.add(test_id, armp);
+     
+     // read back
+     std::shared_ptr<RoboticArm::ArmPart> ap = pc.get(test_id);
+     
+     int readid = ap->getId();
+     std::string readname = ap->getName();
+    
+     int i = 1;        
+     
  }

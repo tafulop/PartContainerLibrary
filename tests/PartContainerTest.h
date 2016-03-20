@@ -17,12 +17,18 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include "../PartContainer.h"
 #include <iostream>
+#include "../../RoboticArmPartLibrary/ArmPart.h"
 
 class PartContainerTest : public CPPUNIT_NS::TestFixture{
     CPPUNIT_TEST_SUITE(PartContainerTest);
     
-    /* Singleton related test */
+  
+    /* int type */
     CPPUNIT_TEST(intTest);
+
+    CPPUNIT_TEST(stringTest);
+    
+    CPPUNIT_TEST(customClassTest);
     
     CPPUNIT_TEST(duplicatedIdSameContainer);
     
@@ -37,12 +43,15 @@ public:
     void tearDown();
 
 private:
-    void testMethod();
-
     
     /* test with integer type */
     void intTest();
     
+    /* test with string */
+    void stringTest();
+    
+    /* armpart test */
+    void customClassTest();
     
     void duplicatedIdSameContainer();
     

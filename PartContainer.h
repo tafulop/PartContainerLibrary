@@ -69,9 +69,8 @@ template <class Type> class PartContainer {
          * Returns a part by its ID.
          * @return 
          */
-        std::shared_ptr<Type> get(std::string id){
-            auto p = std::make_shared<Type>(storedObjects.at(id));
-            return p;
+        std::shared_ptr<Type> get(std::string id){    
+            return std::make_shared<Type>(storedObjects.at(id));
         }
 
 };

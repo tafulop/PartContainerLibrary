@@ -35,7 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/IdService.o
+	${OBJECTDIR}/IdService.o \
+	${OBJECTDIR}/PartContainerManager.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -43,12 +44,15 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 # Test Files
 TESTFILES= \
 	${TESTDIR}/TestFiles/f2 \
+	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f1
 
 # Test Object Files
 TESTOBJECTFILES= \
 	${TESTDIR}/tests/IdServiceTest.o \
 	${TESTDIR}/tests/IdServiceTestRunner.o \
+	${TESTDIR}/tests/PartContainerManagerTest.o \
+	${TESTDIR}/tests/PartContainerManagerTestRunner.o \
 	${TESTDIR}/tests/PartContainerTest.o \
 	${TESTDIR}/tests/PartContainerTestRunner.o
 
@@ -83,6 +87,11 @@ ${OBJECTDIR}/IdService.o: IdService.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IdService.o IdService.cpp
 
+${OBJECTDIR}/PartContainerManager.o: PartContainerManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PartContainerManager.o PartContainerManager.cpp
+
 # Subprojects
 .build-subprojects:
 
@@ -93,6 +102,10 @@ ${OBJECTDIR}/IdService.o: IdService.cpp
 ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/IdServiceTest.o ${TESTDIR}/tests/IdServiceTestRunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/PartContainerManagerTest.o ${TESTDIR}/tests/PartContainerManagerTestRunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/PartContainerTest.o ${TESTDIR}/tests/PartContainerTestRunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
@@ -109,6 +122,18 @@ ${TESTDIR}/tests/IdServiceTestRunner.o: tests/IdServiceTestRunner.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/IdServiceTestRunner.o tests/IdServiceTestRunner.cpp
+
+
+${TESTDIR}/tests/PartContainerManagerTest.o: tests/PartContainerManagerTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/PartContainerManagerTest.o tests/PartContainerManagerTest.cpp
+
+
+${TESTDIR}/tests/PartContainerManagerTestRunner.o: tests/PartContainerManagerTestRunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/PartContainerManagerTestRunner.o tests/PartContainerManagerTestRunner.cpp
 
 
 ${TESTDIR}/tests/PartContainerTest.o: tests/PartContainerTest.cpp 
@@ -136,11 +161,25 @@ ${OBJECTDIR}/IdService_nomain.o: ${OBJECTDIR}/IdService.o IdService.cpp
 	    ${CP} ${OBJECTDIR}/IdService.o ${OBJECTDIR}/IdService_nomain.o;\
 	fi
 
+${OBJECTDIR}/PartContainerManager_nomain.o: ${OBJECTDIR}/PartContainerManager.o PartContainerManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/PartContainerManager.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PartContainerManager_nomain.o PartContainerManager.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/PartContainerManager.o ${OBJECTDIR}/PartContainerManager_nomain.o;\
+	fi
+
 # Run Test Targets
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
 	    ${TESTDIR}/TestFiles/f2 || true; \
+	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	else  \
 	    ./${TEST} || true; \
