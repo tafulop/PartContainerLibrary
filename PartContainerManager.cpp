@@ -27,8 +27,3 @@ PartContainerManager& PartContainerManager::getInstance(){
     static PartContainerManager instance;
     return instance;
 }
-
-/* Init */
-void PartContainerManager::init(){
-    
-}

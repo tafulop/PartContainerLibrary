@@ -33,6 +33,8 @@ class PartContainerTest : public CPPUNIT_NS::TestFixture{
     CPPUNIT_TEST(duplicatedIdSameContainer);
     
     CPPUNIT_TEST(duplicatedIdMultipleContainers);
+    
+    CPPUNIT_TEST(setJointAngleTest);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -56,6 +58,8 @@ private:
     void duplicatedIdSameContainer();
     
     void duplicatedIdMultipleContainers();
+    
+    void setJointAngleTest();
 
 };
 

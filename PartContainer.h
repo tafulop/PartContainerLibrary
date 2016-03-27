@@ -28,7 +28,7 @@ template <class Type> class PartContainer {
         /**
          * Stores the objects.
          */
-        std::map<std::string, Type> storedObjects;
+        std::map<std::string, std::shared_ptr<Type>> storedObjects;
     
     
     public:
@@ -37,13 +37,6 @@ template <class Type> class PartContainer {
          * Default constructor.
          */
         PartContainer(){};
-
-        /**
-         * Copy constructor.
-         * 
-         * @param orig
-         */
-        PartContainer(const PartContainer& orig){};
         
         /**
          * Destructor.
@@ -57,7 +50,7 @@ template <class Type> class PartContainer {
         bool add(std::string id, Type part){
             
             if(IdService::getInstance().registerId(id) == true){
-                storedObjects.emplace(id, part);
+                storedObjects.emplace(id, std::make_shared<Type>(part));
                 return true;
             }else{
                 return false;
@@ -66,11 +59,21 @@ template <class Type> class PartContainer {
         }
 
         /**
-         * Returns a part by its ID.
+         * Returns a part by its ID. 
+         * 
+         * @throws std::out_of_range if element can not be found.
          * @return 
          */
         std::shared_ptr<Type> get(std::string id){    
-            return std::make_shared<Type>(storedObjects.at(id));
+            return storedObjects.at(id);
+        }
+        
+        /**
+         * Returns the number of stored items in the container.
+         * @return 
+         */
+        long unsigned int getItemNumber(){
+            return storedObjects.size();
         }
 
 };

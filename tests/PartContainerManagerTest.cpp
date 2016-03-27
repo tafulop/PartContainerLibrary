@@ -48,16 +48,14 @@ void PartContainerManagerTest::addArmPart(){
     float length = 444.444;
     float mass = 123.321;
     std::string name = "test name";
-    int id = 1;
     
     
-    RoboticArm::ArmPart ap = RoboticArm::ArmPart(id, name, mass, length);
+    RoboticArm::ArmPart ap = RoboticArm::ArmPart(name, mass, length);
     
     p.armparts.add(s_id, ap); 
     
     std::shared_ptr<RoboticArm::ArmPart> a = p.armparts.get(s_id);
     
-    std::cout << "ID: " << a->getId();
        CPPUNIT_ASSERT(success == true);
 
 }
@@ -74,14 +72,13 @@ void PartContainerManagerTest::addBody(){
     float length = 444.444;
     float mass = 123.321;
     std::string name = "test name";
-    int id = 1;
     
     
-    p.bodies.add(s_id, RoboticArm::Body(1, name, mass, length)); 
+    p.bodies.add(s_id, RoboticArm::Body(name, mass, length)); 
     
     std::shared_ptr<RoboticArm::Body> a = p.bodies.get(s_id);
     
-    if(a->getId() != id || a->getLength() != length || a->getMass() != mass || a->getName() != name)success = false;
+    if(a->getLength() != length || a->getMass() != mass || a->getName() != name)success = false;
     
     CPPUNIT_ASSERT(success == true);
 
@@ -102,11 +99,11 @@ void PartContainerManagerTest::addEffector(){
     int id = 1;
     
     
-    p.effectors.add(s_id, RoboticArm::Effector(1, name, mass, length)); 
+    p.effectors.add(s_id, RoboticArm::Effector(name, mass, length)); 
     
     std::shared_ptr<RoboticArm::Effector> a = p.effectors.get(s_id);
     
-    if(a->getId() != id || a->getLength() != length || a->getMass() != mass || a->getName() != name)success = false;
+    if(a->getLength() != length || a->getMass() != mass || a->getName() != name)success = false;
     
     CPPUNIT_ASSERT(success == true);
 
@@ -128,11 +125,11 @@ void PartContainerManagerTest::addJoint(){
     int id = 1;
     
     
-    p.joints.add(s_id, RoboticArm::Joint(1, name, mass, length)); 
+    p.joints.add(s_id, RoboticArm::Joint(name, mass, length)); 
     
     std::shared_ptr<RoboticArm::Joint> a = p.joints.get(s_id);
     
-    if(a->getId() != id || a->getLength() != length || a->getMass() != mass || a->getName() != name)success = false;
+    if(a->getLength() != length || a->getMass() != mass || a->getName() != name)success = false;
     
     CPPUNIT_ASSERT(success == true);
 

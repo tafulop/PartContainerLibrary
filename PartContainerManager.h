@@ -30,12 +30,6 @@ public:
     PartContainer<RoboticArm::Effector> effectors;
     PartContainer<RoboticArm::ArmPart> armparts;
     
-    
-    /**
-     * Creates the type specific containers to store RoboticArmPart objects.
-     */
-    void init();
-    
     /**
      * Singleton get instance member function.
      * @return 

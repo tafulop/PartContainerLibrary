@@ -104,15 +104,34 @@ void PartContainerTest::stringTest(){
      float mass = 123.2, length = 7678.45;
      
      // store
-     RoboticArm::ArmPart armp = RoboticArm::ArmPart(id, test_name, mass, length);
+     RoboticArm::ArmPart armp = RoboticArm::ArmPart(test_name, mass, length);
      bool emplaced = pc.add(test_id, armp);
      
      // read back
      std::shared_ptr<RoboticArm::ArmPart> ap = pc.get(test_id);
      
-     int readid = ap->getId();
+    
      std::string readname = ap->getName();
     
      int i = 1;        
      
+ }
+ 
+ 
+ void PartContainerTest::setJointAngleTest(){
+     
+     float angle = 1234.5678;
+     
+     PartContainer<RoboticArm::Joint> pc;
+     
+     pc.add("J1", RoboticArm::Joint("Joint name", 1,1));
+     
+     auto j1 = pc.get("J1");
+     
+     j1->setAngle(angle);
+     
+     float read_back = pc.get("J1")->getAngle();
+     
+     CPPUNIT_ASSERT(read_back == angle);
+ 
  }
